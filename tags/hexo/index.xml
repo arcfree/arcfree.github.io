@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hexo on 云间客栈</title>
+    <link>https://blog.arcfree.cn/tags/hexo/</link>
+    <description>Recent content in hexo on 云间客栈</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh_CN</language>
+    <lastBuildDate>Mon, 30 Mar 2020 23:18:55 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.arcfree.cn/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hexo 博客搭建</title>
+      <link>https://blog.arcfree.cn/post/blog/hexo/</link>
+      <pubDate>Mon, 30 Mar 2020 23:18:55 +0800</pubDate>
+      
+      <guid>https://blog.arcfree.cn/post/blog/hexo/</guid>
+      <description>Hexo + Github page
+  常用命令:  hexo new markdown_file 新建文章
+hexo new page html_file 新建页面
+hexo generate 生成静态页面到 public 目录
+hexo server 开启预览访问端口，4000， Ctrl+c 关闭 server
+hexo deploy 将 .deploy 目录部署到 GitHub
+ 搭建环境  npm install hexo-cli -g
+npm install hexo-deployer-git &amp;ndash;save
+ 初始化  mkdir Arcfree-blog &amp;amp;&amp;amp; cd Arcfree-blog
+hexo init
+ 启动运行  hexo generate
+hexo server
+ 建立关联 &amp;ndash;&amp;gt; github page  vim /Arcfree-blog/_config.</description>
+    </item>
+    
+  </channel>
+</rss>

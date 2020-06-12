@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Hugo 博客搭建 - 云间客栈</title>
+    
+    <meta name="description" content="Hugo &#43; Github page
+  参考资料:  Hugo &#43; Github Pages 搭建个人博客
+Hugo 与 Hexo 的异同 | reuixiy
+Hugo 主题 Paper 发布 3.0 - 掘金
+适合做个人主页的Hugo主题推荐 | 姑苏流白
+ 首先安装Go环境  GO官方下载并安装最新的安装包即可
+#MAC OS 环境安装hugo
+brew install hugo
+ 创建项目  hugo new site Arcfree-Hugo
+├── archetypes # 存放生成博客的模版
+├── assets # 存放被 Hugo Pipes 处理的文件
+├── config # 存放 hugo 配置文件 支持 JSON YAML TOML 三种格式配置文件
+├── content # 存放 markdown 文件">
+    <meta name="author" content="于易衍">
+    
+    <link href="https://blog.arcfree.cn/an-old-hope.min.css" rel="stylesheet">
+    <link href="https://blog.arcfree.cn/style.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://blog.arcfree.cn/apple-touch-icon.png">
+    <link rel="icon" href="https://blog.arcfree.cn/favicon.ico">
+    <meta name="generator" content="Hugo 0.68.3" />
+    
+    <link rel="alternate" type="application/atom+xml" href="https://blog.arcfree.cn/index.xml" title="云间客栈">
+    
+    
+    <script>
+      function setTheme() {
+        const time = new Date();
+
+        const prev = localStorage.getItem('date');
+        const date = String(time.getMonth() + 1) + '.' + String(time.getDate());
+
+        const now = time.getTime();
+        let sunrise;
+        let sunset;
+
+        function setBodyClass() {
+          if (now > sunrise && now < sunset) return;
+          document.body.classList.add('dark');
+        }
+
+        if (date !== prev) {
+          fetch('https://api.ipgeolocation.io/astronomy?apiKey=5ed37d85103e4defa5df4c5298ed5215')
+            .then(res => res.json())
+            .then(data => {
+              sunrise = data.sunrise.split(':').map(Number);
+              sunset = data.sunset.split(':').map(Number);
+            })
+            .catch(() => {
+              sunrise = [7, 0];
+              sunset = [19, 0];
+            })
+            .finally(() => {
+              sunrise = time.setHours(sunrise[0], sunrise[1], 0);
+              sunset = time.setHours(sunset[0], sunset[1], 0);
+              setBodyClass();
+              localStorage.setItem('sunrise', sunrise);
+              localStorage.setItem('sunset', sunset);
+            });
+          localStorage.setItem('date', date);
+        } else {
+          sunrise = Number(localStorage.getItem('sunrise'));
+          sunset = Number(localStorage.getItem('sunset'));
+          setBodyClass();
+        }
+      }
+    </script>
+  </head>
+  <body class="single">
+    <script>
+      setTheme();
+    </script>
+    <header class="header">
+      <nav class="nav">
+        <p class="logo"><a href="https://blog.arcfree.cn/">云间客栈</a></p>
+        <ul class="menu">
+          <li>
+            <a href="https://blog.arcfree.cn/post/">新书</a>
+          </li>
+          <li>
+            <a href="https://blog.arcfree.cn/about/">关于</a>
+          </li>
+	  <li><a href="https://github.com/arcfree" target="_blank">GitHub</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">Hugo 博客搭建</h1>
+    <div class="post-meta">于易衍 · March 30, 2020</div>
+  </header>
+  <div class="post-content"><blockquote>
+<p>Hugo + Github page</p>
+</blockquote>
+<ul>
+<li>参考资料:</li>
+</ul>
+<p><a href="https://juejin.im/post/5cc41bfef265da036505031c">Hugo + Github Pages 搭建个人博客</a></p>
+<p><a href="https://io-oi.me/tech/hugo-vs-hexo/">Hugo 与 Hexo 的异同 | reuixiy</a></p>
+<p><a href="https://juejin.im/post/5ca2b6bb6fb9a05e1321022f">Hugo 主题 Paper 发布 3.0 - 掘金</a></p>
+<p><a href="https://blog.hgtweb.com/2020/%E9%80%82%E5%90%88%E5%81%9A%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5%E7%9A%84hugo%E4%B8%BB%E9%A2%98%E6%8E%A8%E8%8D%90/">适合做个人主页的Hugo主题推荐 | 姑苏流白</a></p>
+<ul>
+<li>首先安装Go环境</li>
+</ul>
+<p><a href="https://golang.org/dl/">GO官方下载并安装最新的安装包即可</a></p>
+<p>#MAC OS 环境安装hugo</p>
+<p>brew install hugo</p>
+<ul>
+<li>创建项目</li>
+</ul>
+<p>hugo new site Arcfree-Hugo</p>
+<p>├── archetypes # 存放生成博客的模版</p>
+<p>├── assets # 存放被 Hugo Pipes 处理的文件</p>
+<p>├── config # 存放 hugo 配置文件 支持 JSON YAML TOML 三种格式配置文件</p>
+<p>├── content # 存放 markdown 文件</p>
+<p>├── data # 存放 Hugo 处理的数据</p>
+<p>├── layouts # 存放布局文件</p>
+<p>├── static # 存放静态文件 图片 CSS JS文件</p>
+<p>└── themes # 存放主题</p>
+<ul>
+<li>更换主题: <a href="https://themes.gohugo.io/">主题市场</a></li>
+</ul>
+<p>cd Arcfree-Hugo</p>
+<p>git clone <a href="https://github.com/nanxiaobei/hugo-paper">https://github.com/nanxiaobei/hugo-paper</a> themes/paper</p>
+<p>#修改配置文件(baseUrl必须https的链接! )</p>
+<p>vim config.toml</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"><span style="color:#a6e22e">baseUrl</span> = <span style="color:#e6db74">&#34;https://arcfree.github.io/&#34;</span>
+<span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;paper&#34;</span>
+</code></pre></div><ul>
+<li>新增文章</li>
+</ul>
+<p>hugo new post/my-first-post.md # &ldquo;my-first-post.md&rdquo; 是新建文章的草稿</p>
+<ul>
+<li>启动项目 (-D 包含草稿)</li>
+</ul>
+<p>hugo server -D</p>
+<ul>
+<li>编译成静态文件 以便上传到GitHub</li>
+</ul>
+<p>hugo -t paper</p>
+<ul>
+<li>部署脚本</li>
+</ul>
+<p>vim up.sh</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># 部署到 github pages 脚本</span>
+
+<span style="color:#75715e"># 错误时终止脚本</span>
+
+set -e
+
+<span style="color:#75715e"># 删除打包文件夹</span>
+
+rm -rf public
+
+<span style="color:#75715e">#编译打包  paper是主题</span>
+
+hugo -t paper
+
+<span style="color:#75715e"># 进入打包文件夹</span>
+
+cd public
+
+<span style="color:#75715e"># Add changes to git</span>
+
+git init
+
+git add -A
+
+<span style="color:#75715e"># Commit changes.</span>
+
+msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;building site `date`&#34;</span>
+
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -eq <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>
+
+ <span style="color:#66d9ef">then</span> msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span>
+
+<span style="color:#66d9ef">fi</span>
+
+git commit -m <span style="color:#e6db74">&#34;</span>$msg<span style="color:#e6db74">&#34;</span>
+
+<span style="color:#75715e"># 推送到github</span> 
+
+<span style="color:#75715e"># arcfree.github.io 只能使用 master分支</span>
+
+git push -f git@github.com:nusr/nusr.github.io.git master
+
+<span style="color:#75715e"># 回到原文件夹</span>
+
+cd ..
+</code></pre></div><ul>
+<li>遇到的问题:</li>
+</ul>
+<p>We were unable to load Disqus. If you are a moderator please see our troubleshooting guide.</p>
+<p>解决: DisqusShortname是评论功能开关,注释掉即可</p>
+<p>vim config.toml</p>
+<p>#DisqusShortname = &ldquo;于易衍&rdquo;</p>
+<p>创建首页</p>
+<p>hugo new start.md</p>
+<p>博客绑定自己的顶级域名:</p>
+<p>vim config.toml</p>
+<p>baseUrl = &ldquo;<a href="https://arcfree.cn/%22">https://arcfree.cn/&quot;</a></p>
+<p>提交的github上后,修改配置:</p>
+<p><a href="https://github.com/arcfree/arcfree.github.io/settings">https://github.com/username/username.github.io/settings</a></p>
+<p><img src="http://cos.arcfree.cn/image/zgeiOp.jpg" alt="github"></p>
+<p>域名解析设「以腾讯云为例」:</p>
+<p><img src="http://cos.arcfree.cn/image/t5C921.png" alt="t5C921"></p>
+<ul>
+<li>
+<p>遇到的问题:每次通过脚本重新部署github后,就会报404</p>
+<p><img src="http://cos.arcfree.cn/image/8b2Mcx.png" alt="8b2Mcx"></p>
+<p>解决:github项目 &ndash;&gt; setting &ndash;&gt; 重新设置自定义的顶级域名</p>
+</li>
+</ul>
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.arcfree.cn/tags/blog">blog</a></li>
+      <li><a href="https://blog.arcfree.cn/tags/hugo">hugo</a></li>
+    </ul>
+  </footer>
+  
+</article></main>
+<footer class="footer">
+  <span>&copy; 2020 <a href="https://blog.arcfree.cn/">云间客栈</a></span>
+  <span>&middot;</span>
+  <span>京ICP备19051508号-1 All right reserved</span>
+  
+</footer>
+<script src="https://blog.arcfree.cn/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
+

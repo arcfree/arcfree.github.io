@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Hexo 博客搭建 - 云间客栈</title>
+    
+    <meta name="description" content="Hexo &#43; Github page
+  常用命令:  hexo new markdown_file 新建文章
+hexo new page html_file 新建页面
+hexo generate 生成静态页面到 public 目录
+hexo server 开启预览访问端口，4000， Ctrl&#43;c 关闭 server
+hexo deploy 将 .deploy 目录部署到 GitHub
+ 搭建环境  npm install hexo-cli -g
+npm install hexo-deployer-git &ndash;save
+ 初始化  mkdir Arcfree-blog &amp;&amp; cd Arcfree-blog
+hexo init
+ 启动运行  hexo generate
+hexo server
+ 建立关联 &ndash;&gt; github page  vim /Arcfree-blog/_config.">
+    <meta name="author" content="于易衍">
+    
+    <link href="https://blog.arcfree.cn/an-old-hope.min.css" rel="stylesheet">
+    <link href="https://blog.arcfree.cn/style.css" rel="stylesheet">
+    
+    <link rel="apple-touch-icon" href="https://blog.arcfree.cn/apple-touch-icon.png">
+    <link rel="icon" href="https://blog.arcfree.cn/favicon.ico">
+    <meta name="generator" content="Hugo 0.68.3" />
+    
+    <link rel="alternate" type="application/atom+xml" href="https://blog.arcfree.cn/index.xml" title="云间客栈">
+    
+    
+    <script>
+      function setTheme() {
+        const time = new Date();
+
+        const prev = localStorage.getItem('date');
+        const date = String(time.getMonth() + 1) + '.' + String(time.getDate());
+
+        const now = time.getTime();
+        let sunrise;
+        let sunset;
+
+        function setBodyClass() {
+          if (now > sunrise && now < sunset) return;
+          document.body.classList.add('dark');
+        }
+
+        if (date !== prev) {
+          fetch('https://api.ipgeolocation.io/astronomy?apiKey=5ed37d85103e4defa5df4c5298ed5215')
+            .then(res => res.json())
+            .then(data => {
+              sunrise = data.sunrise.split(':').map(Number);
+              sunset = data.sunset.split(':').map(Number);
+            })
+            .catch(() => {
+              sunrise = [7, 0];
+              sunset = [19, 0];
+            })
+            .finally(() => {
+              sunrise = time.setHours(sunrise[0], sunrise[1], 0);
+              sunset = time.setHours(sunset[0], sunset[1], 0);
+              setBodyClass();
+              localStorage.setItem('sunrise', sunrise);
+              localStorage.setItem('sunset', sunset);
+            });
+          localStorage.setItem('date', date);
+        } else {
+          sunrise = Number(localStorage.getItem('sunrise'));
+          sunset = Number(localStorage.getItem('sunset'));
+          setBodyClass();
+        }
+      }
+    </script>
+  </head>
+  <body class="single">
+    <script>
+      setTheme();
+    </script>
+    <header class="header">
+      <nav class="nav">
+        <p class="logo"><a href="https://blog.arcfree.cn/">云间客栈</a></p>
+        <ul class="menu">
+          <li>
+            <a href="https://blog.arcfree.cn/post/">新书</a>
+          </li>
+          <li>
+            <a href="https://blog.arcfree.cn/about/">关于</a>
+          </li>
+	  <li><a href="https://github.com/arcfree" target="_blank">GitHub</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">Hexo 博客搭建</h1>
+    <div class="post-meta">于易衍 · March 30, 2020</div>
+  </header>
+  <div class="post-content"><blockquote>
+<p>Hexo + Github page</p>
+</blockquote>
+<ul>
+<li>常用命令:</li>
+</ul>
+<p>hexo new markdown_file 新建文章</p>
+<p>hexo new page html_file 新建页面</p>
+<p>hexo generate 生成静态页面到 public 目录</p>
+<p>hexo server 开启预览访问端口，4000， Ctrl+c 关闭 server</p>
+<p>hexo deploy 将 .deploy 目录部署到 GitHub</p>
+<ul>
+<li>搭建环境</li>
+</ul>
+<p>npm install hexo-cli -g</p>
+<p>npm install hexo-deployer-git &ndash;save</p>
+<ul>
+<li>初始化</li>
+</ul>
+<p>mkdir Arcfree-blog &amp;&amp; cd Arcfree-blog</p>
+<p>hexo init</p>
+<ul>
+<li>启动运行</li>
+</ul>
+<p>hexo generate</p>
+<p>hexo server</p>
+<ul>
+<li>建立关联 &ndash;&gt; github page</li>
+</ul>
+<p>vim /Arcfree-blog/_config.yml</p>
+<p>deploy:</p>
+<p>type: git</p>
+<p>repository: <a href="mailto:git@github.com">git@github.com</a>:arcfree/arcfree.github.io.git</p>
+<p>branch: master</p>
+<ul>
+<li>生成静态文件 + 上传到github [hexo generate + hexo deploy]</li>
+</ul>
+<p>hexo g -d</p>
+<p>遇到报错:</p>
+<p>ERROR Deployer not found: git</p>
+<p>原因:依赖没安装好,需要重新安装</p>
+<p>解决:</p>
+<p>npm install hexo-deployer-git &ndash;save</p>
+<ul>
+<li>替换主题 : <a href="https://hexo.io/themes/">Hexo的官网主题专栏</a></li>
+</ul>
+<p>cd Arcfree-blog/themes/</p>
+<p>git clone <a href="https://github.com/iissnan/hexo-theme-next">https://github.com/iissnan/hexo-theme-next</a></p>
+<ul>
+<li>修改配置文件</li>
+</ul>
+<p>vim /Arcfree-blog/_config.yml</p>
+<p>#theme: landscape</p>
+<p>theme: hexo-theme-next</p>
+<ul>
+<li>本地编译 查看效果 [hexo generate + hexo server]</li>
+</ul>
+<p>hexo g</p>
+<p>hexo s</p>
+<ul>
+<li>重新部署到线上</li>
+</ul>
+<p>hexo clean #(必须要，不然有时因为缓存问题，服务器更新不了主题)</p>
+<p>hexo g -d</p>
+</div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://blog.arcfree.cn/tags/blog">blog</a></li>
+      <li><a href="https://blog.arcfree.cn/tags/hexo">hexo</a></li>
+    </ul>
+  </footer>
+  
+</article></main>
+<footer class="footer">
+  <span>&copy; 2020 <a href="https://blog.arcfree.cn/">云间客栈</a></span>
+  <span>&middot;</span>
+  <span>京ICP备19051508号-1 All right reserved</span>
+  
+</footer>
+<script src="https://blog.arcfree.cn/highlight.min.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+</body>
+</html>
+

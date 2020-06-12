@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog on 云间客栈</title>
+    <link>https://blog.arcfree.cn/tags/blog/</link>
+    <description>Recent content in blog on 云间客栈</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh_CN</language>
+    <lastBuildDate>Sat, 04 Apr 2020 17:15:34 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.arcfree.cn/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>关于博客主题</title>
+      <link>https://blog.arcfree.cn/about/about/</link>
+      <pubDate>Sat, 04 Apr 2020 17:15:34 +0800</pubDate>
+      
+      <guid>https://blog.arcfree.cn/about/about/</guid>
+      <description>搭建博客前,在网上浏览了很多炫酷或者画风优美的主题,里面也有不少二次元或者古风的主题,让我心生欢喜.可是出于本心,专注阅读的博客体验才是我最想要的,于是返璞归真的Paper主题,我个人感觉再合适不过了~</description>
+    </item>
+    
+    <item>
+      <title>Hexo 博客搭建</title>
+      <link>https://blog.arcfree.cn/post/blog/hexo/</link>
+      <pubDate>Mon, 30 Mar 2020 23:18:55 +0800</pubDate>
+      
+      <guid>https://blog.arcfree.cn/post/blog/hexo/</guid>
+      <description>Hexo + Github page
+  常用命令:  hexo new markdown_file 新建文章
+hexo new page html_file 新建页面
+hexo generate 生成静态页面到 public 目录
+hexo server 开启预览访问端口，4000， Ctrl+c 关闭 server
+hexo deploy 将 .deploy 目录部署到 GitHub
+ 搭建环境  npm install hexo-cli -g
+npm install hexo-deployer-git &amp;ndash;save
+ 初始化  mkdir Arcfree-blog &amp;amp;&amp;amp; cd Arcfree-blog
+hexo init
+ 启动运行  hexo generate
+hexo server
+ 建立关联 &amp;ndash;&amp;gt; github page  vim /Arcfree-blog/_config.</description>
+    </item>
+    
+    <item>
+      <title>Hugo 博客搭建</title>
+      <link>https://blog.arcfree.cn/post/blog/hugo/</link>
+      <pubDate>Mon, 30 Mar 2020 01:59:05 +0800</pubDate>
+      
+      <guid>https://blog.arcfree.cn/post/blog/hugo/</guid>
+      <description>Hugo + Github page
+  参考资料:  Hugo + Github Pages 搭建个人博客
+Hugo 与 Hexo 的异同 | reuixiy
+Hugo 主题 Paper 发布 3.0 - 掘金
+适合做个人主页的Hugo主题推荐 | 姑苏流白
+ 首先安装Go环境  GO官方下载并安装最新的安装包即可
+#MAC OS 环境安装hugo
+brew install hugo
+ 创建项目  hugo new site Arcfree-Hugo
+├── archetypes # 存放生成博客的模版
+├── assets # 存放被 Hugo Pipes 处理的文件
+├── config # 存放 hugo 配置文件 支持 JSON YAML TOML 三种格式配置文件
+├── content # 存放 markdown 文件</description>
+    </item>
+    
+  </channel>
+</rss>
